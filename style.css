@@ -1,0 +1,119 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #211d2b;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.phone {
+  width: min(380px, 100vw);
+  height: min(780px, 100dvh);
+  min-height: 580px;
+  padding: 24px;
+  border: 5px solid #77717f;
+  border-radius: 42px;
+  background: linear-gradient(160deg, #756084, #d9a9c5, #37334d);
+  box-shadow: 0 20px 60px #0008;
+  overflow-y: auto;
+}
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.screen {
+  padding-top: 35px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#lock {
+  text-align: center;
+  padding-top: 100px;
+}
+
+#clock {
+  font-size: 72px;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+button {
+  cursor: pointer;
+  color: white;
+  border: 0;
+  border-radius: 16px;
+  background: #ffffff35;
+  padding: 12px;
+}
+
+#lock button {
+  margin-top: 80px;
+  border-radius: 30px;
+}
+
+#dots {
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 8px;
+  margin: 20px 0;
+}
+
+#message {
+  text-align: center;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 260px;
+  margin: 20px auto;
+}
+
+.keypad button {
+  width: 62px;
+  height: 62px;
+  justify-self: center;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.apps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 10px;
+  margin-top: 30px;
+}
+
+.apps button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 26px;
+}
+
+.apps span {
+  font-size: 10px;
+}
+
+#app-content {
+  padding: 15px;
+  border-radius: 18px;
+  background: #ffffff25;
+  line-height: 1.8;
+}

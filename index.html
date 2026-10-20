@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yushi's Phone</title>
+</head>
+<body>
+  <h1>yushikuno ♡</h1>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yushi's iPhone ♡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="phone">
+    <div class="status">
+      <span id="time">20:30</span>
+      <span>●●● ▰</span>
+    </div>
+
+    <section id="lock" class="screen">
+      <p>Tokuno Yushi</p>
+      <h1 id="clock">20:30</h1>
+      <p id="date">Welcome ♡</p>
+      <button onclick="unlock()">แตะเพื่อปลดล็อก</button>
+    </section>
+
+    <section id="passcode" class="screen hidden">
+      <h2>Enter Passcode</h2>
+      <p>ใส่รหัสผ่าน 4 หลัก</p>
+      <div id="dots">○ ○ ○ ○</div>
+      <p id="message"></p>
+
+      <div class="keypad">
+        <button onclick="press(1)">1</button>
+        <button onclick="press(2)">2</button>
+        <button onclick="press(3)">3</button>
+        <button onclick="press(4)">4</button>
+        <button onclick="press(5)">5</button>
+        <button onclick="press(6)">6</button>
+        <button onclick="press(7)">7</button>
+        <button onclick="press(8)">8</button>
+        <button onclick="press(9)">9</button>
+        <button onclick="clearCode()">⌫</button>
+        <button onclick="press(0)">0</button>
+        <button onclick="clearCode()">C</button>
+      </div>
+    </section>
+
+    <section id="home" class="screen hidden">
+      <h2>Yushi's iPhone ♡</h2>
+      <div class="apps">
+        <button onclick="openApp('KakaoTalk','ริคุ คิดถึงนะ ♡')">💬<span>KakaoTalk</span></button>
+        <button onclick="openApp('Photos','รูปภาพของยูชิ 🌸')">🌸<span>Photos</span></button>
+        <button onclick="openApp('Notes','แพลนเที่ยวกับริคุ ♡')">📝<span>Notes</span></button>
+        <button onclick="openApp('Instagram','yushi.days ♡')">📷<span>Instagram</span></button>
+        <button onclick="openApp('Calendar','นัดเที่ยวกับริคุ')">📅<span>Calendar</span></button>
+        <button onclick="openApp('Settings','Tokuno Yushi ⚙️')">⚙️<span>Settings</span></button>
+      </div>
+    </section>
+
+    <section id="app" class="screen hidden">
+      <button onclick="goHome()">‹ หน้าหลัก</button>
+      <h2 id="app-title"></h2>
+      <p id="app-content"></p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
