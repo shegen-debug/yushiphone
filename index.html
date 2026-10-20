@@ -2,79 +2,295 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yushi's Phone</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokuno Yushi's iPhone</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #17151c;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
+}
+.phone {
+  width: min(100vw, 390px);
+  height: min(820px, 96dvh);
+  min-height: 560px;
+  position: relative;
+  overflow: hidden;
+  border: 5px solid #77717d;
+  border-radius: 48px;
+  background: linear-gradient(155deg,#88758e,#d6a9c5 48%,#65566f);
+  box-shadow: 0 20px 80px #0008;
+}
+.status {
+  position: absolute;
+  top: 22px; left: 24px; right: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.lock {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 155px;
+  cursor: pointer;
+  text-shadow: 0 1px 5px #5554;
+}
+.name { font-size: 16px; }
+.clock { font-size: 68px; font-weight: 300; margin: 14px 0; }
+.date { font-size: 15px; }
+.hint {
+  margin-top: auto;
+  margin-bottom: 44px;
+  font-size: 13px;
+  background: #ffffff35;
+  padding: 13px 20px;
+  border-radius: 30px;
+}
+.shortcuts {
+  position: absolute;
+  bottom: 28px;
+  left: 28px; right: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+.shortcuts button {
+  border: 0; border-radius: 50%;
+  width: 48px; height: 48px;
+  color: white; background: #ffffff35;
+  font-size: 21px; cursor: pointer;
+}
+.passcode, .home {
+  display: none;
+  height: 100%;
+  padding: 100px 24px 30px;
+  text-align: center;
+}
+.passcode h2 { font-size: 22px; font-weight: 400; }
+.dots { margin: 28px; letter-spacing: 12px; font-size: 24px; }
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 270px;
+  margin: 25px auto;
+}
+.keypad button {
+  width: 68px; height: 68px; justify-self: center;
+  border: 1px solid #ffffff60;
+  border-radius: 50%;
+  color: white; background: #ffffff24;
+  font-size: 23px; cursor: pointer;
+}
+.keypad button:active { background: #ffffff60; }
+.home { padding: 75px 22px 25px; }
+.home h2 { font-weight: 400; }
+.apps {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px 12px;
+  margin-top: 42px;
+}
+.app { cursor: pointer; font-size: 12px; }
+.app span {
+  display: grid; place-items: center;
+  margin: 0 auto 8px;
+  width: 58px; height: 58px;
+  border-radius: 16px;
+  background: #ffffffd9;
+  font-size: 30px;
+}
+.message {
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 20px;
+  background: #ffffff35;
+  line-height: 1.8;
+}
+.dock {
+  position: absolute;
+  bottom: 25px; left: 20px; right: 20px;
+  display: flex; justify-content: space-around;
+  padding: 12px;
+  border-radius: 25px;
+  background: #ffffff40;
+  font-size: 25px;
+}
+.back {
+  border: 0; background: #ffffff35; color: white;
+  padding: 10px 18px; border-radius: 20px;
+  cursor: pointer;
+}
+#note { white-space: pre-line; line-height: 1.8; }
+</style>
 </head>
 <body>
-  <h1>yushikuno ♡</h1>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="th">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yushi's iPhone ♡</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <div class="phone">
-    <div class="status">
-      <span id="time">20:30</span>
-      <span>●●● ▰</span>
-    </div>
-
-    <section id="lock" class="screen">
-      <p>Tokuno Yushi</p>
-      <h1 id="clock">20:30</h1>
-      <p id="date">Welcome ♡</p>
-      <button onclick="unlock()">แตะเพื่อปลดล็อก</button>
-    </section>
-
-    <section id="passcode" class="screen hidden">
-      <h2>Enter Passcode</h2>
-      <p>ใส่รหัสผ่าน 4 หลัก</p>
-      <div id="dots">○ ○ ○ ○</div>
-      <p id="message"></p>
-
-      <div class="keypad">
-        <button onclick="press(1)">1</button>
-        <button onclick="press(2)">2</button>
-        <button onclick="press(3)">3</button>
-        <button onclick="press(4)">4</button>
-        <button onclick="press(5)">5</button>
-        <button onclick="press(6)">6</button>
-        <button onclick="press(7)">7</button>
-        <button onclick="press(8)">8</button>
-        <button onclick="press(9)">9</button>
-        <button onclick="clearCode()">⌫</button>
-        <button onclick="press(0)">0</button>
-        <button onclick="clearCode()">C</button>
-      </div>
-    </section>
-
-    <section id="home" class="screen hidden">
-      <h2>Yushi's iPhone ♡</h2>
-      <div class="apps">
-        <button onclick="openApp('KakaoTalk','ริคุ คิดถึงนะ ♡')">💬<span>KakaoTalk</span></button>
-        <button onclick="openApp('Photos','รูปภาพของยูชิ 🌸')">🌸<span>Photos</span></button>
-        <button onclick="openApp('Notes','แพลนเที่ยวกับริคุ ♡')">📝<span>Notes</span></button>
-        <button onclick="openApp('Instagram','yushi.days ♡')">📷<span>Instagram</span></button>
-        <button onclick="openApp('Calendar','นัดเที่ยวกับริคุ')">📅<span>Calendar</span></button>
-        <button onclick="openApp('Settings','Tokuno Yushi ⚙️')">⚙️<span>Settings</span></button>
-      </div>
-    </section>
-
-    <section id="app" class="screen hidden">
-      <button onclick="goHome()">‹ หน้าหลัก</button>
-      <h2 id="app-title"></h2>
-      <p id="app-content"></p>
-    </section>
+<div class="phone" id="phone">
+  <div class="status">
+    <span id="smallClock">21:16</span>
+    <span>●●● ▰</span>
   </div>
 
-  <script src="script.js"></script>
+  <section class="lock" id="lock" onclick="showPasscode()">
+    <div class="name">Tokuno Yushi</div>
+    <div class="clock" id="clock">21:16</div>
+    <div class="date" id="date"></div>
+    <div class="hint">ปัดขึ้นหรือแตะเพื่อปลดล็อก</div>
+  </section>
+
+  <div class="shortcuts" id="shortcuts">
+    <button onclick="event.stopPropagation(); alert('🔦 เปิดไฟฉาย')">☼</button>
+    <button onclick="event.stopPropagation(); alert('📷 กล้อง')">📷</button>
+  </div>
+
+  <section class="passcode" id="passcode">
+    <h2>ป้อนรหัส</h2>
+    <div>ป้อนรหัสเพื่อเปิด iPhone</div>
+    <div class="dots" id="dots">○ ○ ○ ○</div>
+    <div class="keypad">
+      <button onclick="digit('1')">1</button>
+      <button onclick="digit('2')">2</button>
+      <button onclick="digit('3')">3</button>
+      <button onclick="digit('4')">4</button>
+      <button onclick="digit('5')">5</button>
+      <button onclick="digit('6')">6</button>
+      <button onclick="digit('7')">7</button>
+      <button onclick="digit('8')">8</button>
+      <button onclick="digit('9')">9</button>
+      <button onclick="clearCode()">⌫</button>
+      <button onclick="digit('0')">0</button>
+      <button onclick="clearCode()">×</button>
+    </div>
+    <button class="back" onclick="showLock()">ยกเลิก</button>
+  </section>
+
+  <section class="home" id="home">
+    <h2>yushikuno ♡</h2>
+    <div id="appContent"></div>
+    <div class="apps" id="apps">
+      <div class="app" onclick="openApp('chat')"><span>💬</span>KakaoTalk</div>
+      <div class="app" onclick="openApp('photos')"><span>🌸</span>Photos</div>
+      <div class="app" onclick="openApp('notes')"><span>📝</span>Notes</div>
+      <div class="app" onclick="openApp('search')"><span>🔎</span>Search</div>
+      <div class="app" onclick="openApp('music')"><span>🎵</span>Music</div>
+      <div class="app" onclick="openApp('settings')"><span>⚙️</span>Settings</div>
+    </div>
+    <div class="dock">📞　🌐　✉️　🎧</div>
+  </section>
+</div>
+
+<script>
+let code = "";
+const correctCode = "4503";
+
+function updateTime() {
+  const now = new Date();
+  const time = now.toLocaleTimeString("th-TH", {
+    hour: "2-digit", minute: "2-digit", hour12: false
+  });
+  document.getElementById("clock").textContent = time;
+  document.getElementById("smallClock").textContent = time;
+  document.getElementById("date").textContent =
+    now.toLocaleDateString("th-TH", {
+      weekday: "long", day: "numeric", month: "long"
+    });
+}
+updateTime();
+setInterval(updateTime, 1000);
+
+function hideAll() {
+  ["lock","passcode","home","shortcuts"].forEach(id => {
+    document.getElementById(id).style.display = "none";
+  });
+}
+function showLock() {
+  hideAll();
+  document.getElementById("lock").style.display = "flex";
+  document.getElementById("shortcuts").style.display = "flex";
+}
+function showPasscode() {
+  hideAll();
+  document.getElementById("passcode").style.display = "block";
+  code = "";
+  updateDots();
+}
+function digit(n) {
+  if (code.length >= 4) return;
+  code += n;
+  updateDots();
+  if (code.length === 4) {
+    if (code === correctCode) {
+      hideAll();
+      document.getElementById("home").style.display = "block";
+    } else {
+      document.getElementById("dots").textContent = "รหัสไม่ถูกต้อง";
+      document.getElementById("phone").animate([
+        {transform:"translateX(0)"},
+        {transform:"translateX(-8px)"},
+        {transform:"translateX(8px)"},
+        {transform:"translateX(0)"}
+      ], {duration:250});
+      setTimeout(() => { code = ""; updateDots(); }, 700);
+    }
+  }
+}
+function updateDots() {
+  document.getElementById("dots").textContent =
+    [...Array(4)].map((_,i) => i < code.length ? "●" : "○").join(" ");
+}
+function clearCode() {
+  code = "";
+  updateDots();
+}
+function openApp(app) {
+  const content = document.getElementById("appContent");
+  document.getElementById("apps").style.display = "none";
+  document.querySelector(".dock").style.display = "none";
+  let title = "";
+  let body = "";
+  if (app === "chat") {
+    title = "KakaoTalk 💬";
+    body = "Riku ♡<br><br><div class='message'>ริคุ คิดถึงนะ 💗</div>";
+  } else if (app === "photos") {
+    title = "Photos 🌸";
+    body = "รูปภาพของยูชิ ♡<br><p>เพิ่มลิงก์รูป Pinterest ของคุณในส่วนนี้ได้</p>";
+  } else if (app === "notes") {
+    title = "Notes 📝";
+    body = "<div class='message' id='note'>แพลนเที่ยวกับริคุ ✈️\n\nไอเดียของขวัญวันเกิด 🎁</div>";
+  } else if (app === "search") {
+    title = "Search 🔎";
+    body = "<div class='message'>ประวัติการค้นหา<br>☕ cafes</div>";
+  } else {
+    title = app === "music" ? "Music 🎵" : "Settings ⚙️";
+    body = "<div class='message'>Tokuno Yushi ♡</div>";
+  }
+  content.innerHTML = `<h2>${title}</h2>${body}<br><br><button class="back" onclick="closeApp()">กลับหน้าโฮม</button>`;
+  content.style.display = "block";
+}
+function closeApp() {
+  document.getElementById("appContent").style.display = "none";
+  document.getElementById("appContent").innerHTML = "";
+  document.getElementById("apps").style.display = "grid";
+  document.querySelector(".dock").style.display = "flex";
+}
+let touchStart = 0;
+document.getElementById("phone").addEventListener("touchstart", e => {
+  touchStart = e.touches[0].clientY;
+});
+document.getElementById("phone").addEventListener("touchend", e => {
+  if (touchStart - e.changedTouches[0].clientY > 45 &&
+      document.getElementById("lock").style.display !== "none") {
+    showPasscode();
+  }
+});
+showLock();
+</script>
 </body>
 </html>
